@@ -45,6 +45,13 @@ def graph():
     dot = nx.drawing.nx_pydot.to_pydot(G)
     dot.write_png('write.png')
 
+    # now let's try to display the png instead
+    png_output = BytesIO()
+    png_output = dot.create_png()
+    response = make_response(png_output)
+    response.headers['Content-Type'] = 'image/png'
+    return response
+
 
 
 if __name__ == "__main__":
