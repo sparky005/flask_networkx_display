@@ -1,4 +1,4 @@
-from flask import Flask, make_response
+from flask import Flask, make_response, render_template
 import datetime
 from io import BytesIO
 import random
@@ -11,7 +11,6 @@ app = Flask(__name__)
 
 @app.route("/simple.png")
 def simple():
-
     fig=Figure()
     ax=fig.add_subplot(111)
     x=[]
@@ -31,6 +30,10 @@ def simple():
     response=make_response(png_output.getvalue())
     response.headers['Content-Type'] = 'image/png'
     return response
+
+@app.route('/')
+def index():
+    return render_template('graph.html', graph=graph)
 
 @app.route('/graph')
 def graph():
