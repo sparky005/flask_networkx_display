@@ -3,6 +3,7 @@
     <title>{{ title }} - image</title>
   </head>
   <body>
-    <img src="{{ url_for('graph', graph=graph) }}" alt="Image Placeholder" height="100">
+    <img src="{{ url_for('graph') }}" alt="Image Placeholder" height="100">
+    <p>{{ query }}</p>
   </body>
 </html>

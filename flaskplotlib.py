@@ -1,4 +1,4 @@
-from flask import Flask, make_response, render_template
+from flask import Flask, make_response, render_template, request
 import datetime
 from io import BytesIO
 import random
@@ -31,12 +31,19 @@ def simple():
     response.headers['Content-Type'] = 'image/png'
     return response
 
-@app.route('/inline')
+@app.route('/inline', methods=['POST'])
 def inline():
-    return render_template('graph.html', graph=graph)
+    # returns image embedded in page
+    query = request.form['query']
+    return render_template('graph.html', query=query)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/graph')
 def graph():
+    # returns image directly
     G = nx.Graph()
     G.add_node(1)
     G.add_nodes_from([2, 3])
