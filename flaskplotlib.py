@@ -31,8 +31,8 @@ def simple():
     response.headers['Content-Type'] = 'image/png'
     return response
 
-@app.route('/')
-def index():
+@app.route('/inline')
+def inline():
     return render_template('graph.html', graph=graph)
 
 @app.route('/graph')
