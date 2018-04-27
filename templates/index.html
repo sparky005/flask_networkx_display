@@ -1,0 +1,13 @@
+<!doctype html>
+{% block body %}
+<Title>form example</title>
+<div class=page>
+    <h1>Form example</h1>
+    <form action="{{ url_for('inline', query=query) }}" method=POST>
+        <dl>
+            <dt>Enter query:
+            <dd><input type=text name=query>
+        </dl>
+    </form>
+</div>
+{% endblock %}
