@@ -53,7 +53,6 @@ def graph():
     e = (2,3)
     G.add_edge(*e)
     dot = nx.drawing.nx_pydot.to_pydot(G)
-    dot.write_png('write.png')
 
     # now let's try to display the png instead
     png_output = BytesIO()
